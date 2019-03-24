@@ -17,11 +17,11 @@ if ($_GET) {
     } else if ($_GET['query'] == 'totals') {
         $db = openDatabaseConnection();
         totals($db);
-    } else if ($_GET['query'] == 'weekly') {
+    } else if ($_GET['query'] == 'weekly' && isset($_GET['category'])) {
         $db = openDatabaseConnection();
-        weekly($db, 'Groceries');
+        weekly($db, $_GET['category']);
     } else {
-        echo "Invalid request";
+        echo "Invalid request.";
     }
 
 } else {

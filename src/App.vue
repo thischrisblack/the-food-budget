@@ -14,9 +14,9 @@ export default {
   data () {
     return {
       categories: [
-          'Groceries',
-          'Snacks',
-          'Restaurants'
+        'Groceries',
+        'Snacks',
+        'Restaurants'
       ]
     }
   },
@@ -63,7 +63,7 @@ input, textarea, select {
   grid-auto-rows: 1fr;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas: "left center right";
-  grid-column-gap: 2rem;
+  grid-column-gap: 5rem;
 }
 
 .entry-form {
