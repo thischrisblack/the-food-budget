@@ -19,7 +19,7 @@ if ($_GET) {
         totals($db);
     } else if ($_GET['query'] == 'weekly') {
         $db = openDatabaseConnection();
-        weekly($db);
+        weekly($db, 'Groceries');
     } else {
         echo "Invalid request";
     }

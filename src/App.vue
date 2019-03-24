@@ -1,7 +1,7 @@
 <template>
   <div id="app" class="container">
     <EntryForm/>
-    <Weekly/>
+    <Weekly :categories="categories"/>
   </div>
 </template>
 
@@ -11,6 +11,15 @@ import Weekly from "./components/Weekly.vue";
 
 export default {
   name: "app",
+  data () {
+    return {
+      categories: [
+          'Groceries',
+          'Snacks',
+          'Restaurants'
+      ]
+    }
+  },
   components: {
     EntryForm,
     Weekly

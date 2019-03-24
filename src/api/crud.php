@@ -44,9 +44,9 @@ function totals($db)
 /**
  * Get the totals spent each week.
  */
-function weekly($db) 
+function weekly($db, $category) 
 {
-    $sql = "SELECT SUM(amount) as total, YEARWEEK(date, 1) as yearweek FROM spending WHERE category = 'Groceries' GROUP BY yearweek ORDER BY yearweek DESC";
+    $sql = "SELECT SUM(amount) as total, YEARWEEK(date, 1) as yearweek FROM spending WHERE category = '$category' GROUP BY yearweek ORDER BY yearweek DESC";
     $query = $db->prepare($sql);
     $query->execute();
 

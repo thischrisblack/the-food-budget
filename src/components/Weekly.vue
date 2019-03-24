@@ -1,7 +1,7 @@
 <template>
     <div class="weekly">
         <ul>
-            <li v-for="(week, index) in weeks" :key="index">{{ week.total }} {{ week.yearweek }}</li>
+            <li v-for="(week, index) in weekList" :key="index">{{ week.total }} {{ week.yearweek }}</li>
         </ul>
     </div>    
 </template>
@@ -11,14 +11,15 @@ import axios from 'axios';
 export default {
     data() {
         return {
-            weeks: null
+            weeks: null,
+            numWeeks: 2
         }
     },
-    methods: {
-        yearWeek (date) {
-            let year = date.substring(0,4);
-            let day = date.substring(5);
-
+    computed: {
+        weekList: function () {
+            if (this.weeks) {
+                return this.weeks.slice(0, this.numWeeks);
+            }
         }
     },
     mounted () {
