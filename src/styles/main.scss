@@ -1,0 +1,52 @@
+/*  Available Fonts:
+    font-family: 'Source Sans Pro', sans-serif;
+    font-family: 'Inconsolata', monospace;
+    font-family: 'Lora', serif; 
+    font-family: 'IBM Plex Mono', monospace;
+*/
+
+
+
+$main-font-size: 1.4rem;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: $main-font-size;
+  line-height: 2.2rem;
+  padding: 2rem;
+}
+
+.container {
+  display: grid;
+  grid-auto-rows: 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: "left center right";
+  grid-column-gap: 5rem;
+}
+
+.entry-form {
+  grid-area: left;
+}
+
+.week {
+  grid-area: center;
+  display: grid;
+}
+
+.category {
+}

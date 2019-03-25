@@ -1,13 +1,16 @@
 <template>
   <div id="app" class="container">
-    <EntryForm/>
-    <Week v-for="category in categories" :key="category" :category="category"/>
+    <EntryForm class="entry-form"/>
+    <div class="week">
+      <h2>Previous Weeks</h2>
+      <Category class="category" v-for="category in categories" :key="category" :category="category"/>
+    </div>
   </div>
 </template>
 
 <script>
 import EntryForm from "./components/EntryForm.vue";
-import Week from "./components/Week.vue";
+import Category from "./components/Category.vue";
 
 export default {
   name: "app",
@@ -22,52 +25,13 @@ export default {
   },
   components: {
     EntryForm,
-    Week
+    Category
   }
 };
 </script>
 
 <style lang="scss">
 
-$main-font-size: 1.4rem;
-
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: inherit;
-}
-
-html {
-  box-sizing: border-box;
-  font-size: 62.5%;
-}
-
-body {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-size: $main-font-size;
-  line-height: 2.2rem;
-  padding: 2rem;
-}
-
-input, textarea, select {
-  display: inline-block;
-  width: 100%;
-}
-
-.container {
-  display: grid;
-  grid-auto-rows: 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-areas: "left center right";
-  grid-column-gap: 5rem;
-}
-
-.entry-form {
-  grid-area: left;
-}
+  @import './styles/main.scss';
 
 </style>

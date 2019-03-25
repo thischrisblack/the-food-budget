@@ -1,0 +1,32 @@
+STYLES
+
+---
+
+entry-form
+
+    H1
+    input
+    textarea
+    button
+
+---
+
+week // the class of the <week> element
+
+    h2
+
+---
+
+category // the class of each category element
+
+    H3
+    ul
+    li
+
+    __date
+    __amount
+
+    __footer
+    __average // the $$$ average
+
+    __incrementer

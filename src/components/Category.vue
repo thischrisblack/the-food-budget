@@ -1,30 +1,27 @@
 <template>
-    <div class="weekly">
-        {{ category }}
+    <div>
+        <h3>{{ category }}</h3>
         <ul>
             <li v-for="(week, index) in weeklyData" :key="index">
-                {{ week.yearweek }} {{ week.total }}
+                <span class="category__date">{{ week.yearweek }}</span> <span class="category__amount">{{ week.total }}</span>
             </li>
         </ul>
-        <div @click="numWeeks += 3">MORE</div>
-        <div>{{ weeklyTotal }}</div>
-        <div>{{ weeklyAverage }}</div>
-    </div>    
+        <div class="category__footer">
+            <span>Average</span>
+            <span class="category__average">{{ weeklyAverage }}</span>
+            <button class="category__incrementer" @click="showWeeks *= 2">MORE</button>
+        </div>
+        
+    </div>   
 </template>
 
 <script>
-
-/**
- * HEY why don't you make this into a generic weekly module, and pass the category in as a prop? From App.vue?
- */
-
-
 import axios from 'axios';
 export default {
     data() {
         return {
             queryResult: null,
-            numWeeks: 3
+            showWeeks: 4
         }
     },
     props: [
@@ -33,7 +30,7 @@ export default {
     computed: {
         weeklyData () {
             if (this.queryResult) {
-                return this.queryResult.slice(0, this.numWeeks);
+                return this.queryResult.slice(0, this.showWeeks);
             }
         },
         weeklyTotal () {
