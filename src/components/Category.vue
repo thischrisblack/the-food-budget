@@ -54,7 +54,6 @@ export default {
             axios.get('http://localhost/the-food-budget/src/api/?query=weekly&category=' + category, {crossdomain: true})
             .then((response) => {
                 // handle success
-                console.log(response.data);
                 this.queryResult = response.data;
             })
             .catch(function (error) {
