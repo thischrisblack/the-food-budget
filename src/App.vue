@@ -1,11 +1,12 @@
 <template>
   <div id="app" class="container">
     <EntryForm class="entry-form"/>
-    <Current :trips="trips" v-if="(trips)"/>
-    <div class="week">
+    <Current class="current" :trips="trips" v-if="(trips)"/>
+    <div class="history">
       <h2>Previous Weeks</h2>
       <Category class="category" v-for="category in categories" :key="category" :category="category"/>
     </div>
+  <Totals class="totals"/>
   </div>
 </template>
 
@@ -13,6 +14,7 @@
 import EntryForm from "./components/EntryForm.vue";
 import Category from "./components/Category.vue";
 import Current from "./components/Current.vue";
+import Totals from "./components/Totals.vue";
 import axios from 'axios';
 
 export default {
@@ -30,7 +32,8 @@ export default {
   components: {
     EntryForm,
     Category,
-    Current
+    Current,
+    Totals
   },
   methods: {
       getTrips () {

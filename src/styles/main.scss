@@ -39,6 +39,22 @@ body {
   grid-column-gap: 5rem;
 }
 
+ul {
+  list-style-type: none;
+}
+
+.item {  
+
+  &:not(:last-child) {
+    border-bottom: 1px dotted silver;
+  }
+
+  &__value {
+    float: right;
+  }
+  
+}
+
 .entry-form {
   grid-area: left;
 }
@@ -46,6 +62,9 @@ body {
 .week {
   grid-area: center;
   display: grid;
+}
+
+.totals {
 }
 
 .category {

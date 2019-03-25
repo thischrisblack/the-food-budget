@@ -2,6 +2,13 @@ STYLES
 
 ---
 
+TYPOGRAPHY
+
+h1 
+h2
+h3
+ul
+
 entry-form
 
     H1
@@ -11,18 +18,13 @@ entry-form
 
 ---
 
-week // the class of the <week> element
-
-    h2
+history // the class of the div where the weekly totals go
 
 ---
 
-category // the class of each category element
+category // the class of each category div
 
-    H3
-    ul
-    li
-
+    __item // list item
     __date
     __amount
 
@@ -30,3 +32,11 @@ category // the class of each category element
     __average // the $$$ average
 
     __incrementer
+
+---
+
+current // the class of the <current> element.
+
+    __item // the list item 
+    __category
+    __total

@@ -1,7 +1,12 @@
 <template>
     <div>
         <h2>This Week</h2>
-        <div v-for="(total, category) in categoryTotals" :key="category">{{ category }} {{ total }}</div>
+        <ul>
+            <li class="item" v-for="(total, category) in categoryTotals" :key="category">
+                <span class="item__name">{{ category }}</span> 
+                <span class="item__value">{{ total }}</span> 
+            </li>
+        </ul>        
     </div>    
 </template>
 

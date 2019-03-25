@@ -2,8 +2,8 @@
     <div>
         <h3>{{ category }}</h3>
         <ul>
-            <li v-for="(week, index) in weeklyData" :key="index">
-                <span class="category__date">{{ week.yearweek }}</span> <span class="category__amount">{{ week.total }}</span>
+            <li class="item"  v-for="(week, index) in weeklyData" :key="index">
+                <span class="item__name">{{ week.yearweek }}</span> <span class="item__value">{{ week.total }}</span>
             </li>
         </ul>
         <div class="category__footer">
