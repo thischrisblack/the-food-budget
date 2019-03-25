@@ -1,13 +1,13 @@
 <template>
   <div id="app" class="container">
     <EntryForm/>
-    <Weekly :categories="categories"/>
+    <Week v-for="category in categories" :key="category" :category="category"/>
   </div>
 </template>
 
 <script>
 import EntryForm from "./components/EntryForm.vue";
-import Weekly from "./components/Weekly.vue";
+import Week from "./components/Week.vue";
 
 export default {
   name: "app",
@@ -22,7 +22,7 @@ export default {
   },
   components: {
     EntryForm,
-    Weekly
+    Week
   }
 };
 </script>
