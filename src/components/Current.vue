@@ -1,13 +1,16 @@
 <template>
     <div>
-        {{ getMonday() }}
+        <h2>This Week</h2>
+        <div v-for="(total, category) in categoryTotals" :key="category">{{ category }} {{ total }}</div>
     </div>    
 </template>
 
 <script>
+
+import {_} from 'vue-underscore';
+
 export default {
-    props: ['trips']
-    ,
+    props: ['trips'],
     methods: {
         getMonday () {
             let today = new Date();
@@ -20,14 +23,30 @@ export default {
             month = (month > 9 ? '' : '0') + month;
             date = (date > 9 ? '' : '0') + date;
             return year + '-' + month + '-' + date;
+        },
+        underCats () {
+            
         }
     },
     computed: {
-      thisWeek () {
-        if (this.trips) {
-            return this.trips.filter(el => el.date > this.getMonday());
+        thisWeek () {
+            if (this.trips) {
+                let thisWeekTrips = this.trips.filter(el => el.date > this.getMonday());
+                return thisWeekTrips;
+            }
+        },
+        categoryTotals () {
+            let thisWeekTotals = {};
+            let categorized = _.groupBy(this.thisWeek, val => val.category);
+            for (let category in categorized) {
+                console.log(category);
+                let totalAmount = categorized[category].reduce(function (accumulator, currentValue) {
+                    return accumulator + currentValue.amount * 1;
+                }, 0);
+                thisWeekTotals[category] = totalAmount.toFixed(2);
+            }
+            return thisWeekTotals;
         }
-      }
     }
 }
 </script>
