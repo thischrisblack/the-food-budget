@@ -5,21 +5,21 @@
 
         <h1>WHAT DID WE SPEND?</h1>
 
-        <input type="number" step="0.01" placeholder="0.00" name="amount">
+        <input type="number" step="0.01" placeholder="0.00" v-model="amount">
 
-        <input type="text" list="prevPlaces" placeholder="At this place" name="place" class="dropdown">
+        <input type="text" list="prevPlaces" placeholder="At this place" class="dropdown" v-model="place">
         <datalist ID="prevPlaces">
             <option v-for="place in places" :key="place.place" :value="place.place"></option>
         </datalist>
 
-        <textarea name="notes" placeholder="Notes"></textarea>
+        <textarea placeholder="Notes" v-model="notes"></textarea>
 
-        <input type="text" list="prevCats" placeholder="Category" name="place" class="dropdown">
+        <input type="text" list="prevCats" placeholder="Category" class="dropdown" v-model="category">
         <datalist ID="prevCats">
             <option v-for="(cat, key) in categories" :key="key" :value="cat"></option>
         </datalist>
 
-        <button class="button button__main">sdfsd</button>
+        <button class="button button__main" @click.prevent="addItem">sdfsd</button>
 
         </form>
 
@@ -28,8 +28,42 @@
 </template>
 
 <script>   
+    import axios from 'axios';
     export default {
-        props: ['places', 'trips', 'categories']
+        props: ['places', 'trips', 'categories'],
+        data () {
+            return {
+                amount: '',
+                place: '',
+                notes: '',
+                category: ''
+            }
+        },
+        methods: {
+            addItem () {
+                let qs = require('qs');
+                axios.post('http://localhost/the-food-budget/src/api/', qs.stringify({
+                    amount: this.amount,
+                    place: this.place,
+                    notes: this.notes,
+                    category: this.category
+                }))
+                .then((response) => {
+                    console.log(response);
+                    this.amount = '';
+                    this.place = '';
+                    this.notes = '';
+                    this.category = '';  
+                    this.emitClick();
+                })
+                .catch(function (error) {
+                  console.log(error);
+                });
+            },
+            emitClick () {
+                this.$emit('itemadded');
+            }
+        }
     }
 </script>
 

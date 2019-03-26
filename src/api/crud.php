@@ -57,4 +57,33 @@ function weekly($db, $category)
     echo JSON_ENCODE($weeks);
 }
 
+/**
+ * Post a new trip
+ */
+function addItem($db, $postData)
+{
+    $amount = $postData["amount"];
+    $place = addslashes($postData["place"]);
+    $notes = addslashes($postData["notes"]);
+    $category = $postData["category"];
+
+    $sql = "INSERT INTO spending (amount, 
+                                  place, 
+                                  notes, 
+                                  category)
+                                   VALUES 
+                                  (:amount, 
+                                   :place, 
+                                   :notes, 
+                                   :category)";
+    $query = $db->prepare($sql);
+    $parameters = array(':amount' => $amount,
+                         ':place' => $place,
+                         ':notes' => $notes,
+                         ':category' => $category,
+                        );
+    $query->execute($parameters);
+
+    // $mysqli->query("INSERT INTO spending (amount, place, notes, category) VALUES ('$amount', '$place', '$notes', '$category')");
+}
 ?>

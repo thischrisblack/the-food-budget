@@ -1,6 +1,6 @@
 <template>
     <div id="app" class="container">
-        <EntryForm class="entry-form" :places="places" :trips="trips" :categories="categories"/>
+        <EntryForm class="entry-form" :places="places" :trips="trips" :categories="categories" v-on:itemadded="getTrips"/>
         <Current class="current" :trips="trips"/>
         <div class="history">
             <h2>Previous Weeks</h2>
