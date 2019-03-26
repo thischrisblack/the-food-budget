@@ -1,10 +1,20 @@
 <template>
     <div>
         <h2>This Week</h2>
+        <h3>Trips</h3>
+        <ul>
+            <li class="item" v-for="(trip, key) in thisWeek" :key="key">
+                <span class="item__name">{{ trip.place }}</span>
+                <span class="item__value item__value--money">{{ trip.amount }}
+                    <span class="item__delete" @click="deleteItem(trip.pk)">&times;</span>
+                </span>
+            </li>
+        </ul>
+        <h3>Totals</h3>
         <ul>
             <li class="item" v-for="(total, category) in categoryTotals" :key="category">
                 <span class="item__name">{{ category }}</span> 
-                <span class="item__value">{{ total }}</span> 
+                <span class="item__value item__value--money">{{ total }}</span> 
             </li>
         </ul>        
     </div>    
@@ -13,9 +23,15 @@
 <script>
 
 import groupBy from 'lodash.groupby';
+import axios from 'axios';
 
 export default {
     props: ['trips'],
+    data () {
+        return {
+            deleteID: ''
+        }
+    },
     methods: {
         getMonday () {
             let today = new Date();
@@ -28,6 +44,23 @@ export default {
             month = (month > 9 ? '' : '0') + month;
             date = (date > 9 ? '' : '0') + date;
             return year + '-' + month + '-' + date;
+        },
+        deleteItem (id) {
+            let qs = require('qs');
+            axios.post('http://localhost/the-food-budget/src/api/', qs.stringify({
+                delete: 'delete',
+                pk: id
+            }))
+            .then((response) => {
+                console.log(response);
+                this.emitDelete();
+            })
+            .catch(function (error) {
+              console.log(error);
+            });
+        },
+        emitDelete () {
+            this.$emit('itemdeleted');
         }
     },
     computed: {

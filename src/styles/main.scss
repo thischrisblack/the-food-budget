@@ -49,15 +49,15 @@ input, textarea, select {
 	padding: .8rem 1.5rem;
 	width: 100%;
 	cursor: pointer;
+	background-color: transparent;
+	border: none;
+	font-weight: bold;
+	font-size: 150%;
 
 	&__main {
 	}
 
 	&--increment {
-		background-color: transparent;
-		border: none;
-		font-weight: bold;
-		font-size: 150%;
 	}
 
 }
@@ -85,6 +85,13 @@ ul {
 		&--money::before {
 			content: '$';
 		}
+	}
+
+	&__delete {
+		font-weight: bold;
+		font-size: 120%;
+		margin-left: 2rem;
+		cursor: pointer;
 	}
 
 	&--strong {

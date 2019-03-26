@@ -19,7 +19,7 @@
             <option v-for="(cat, key) in categories" :key="key" :value="cat"></option>
         </datalist>
 
-        <button class="button button__main" @click.prevent="addItem">sdfsd</button>
+        <button class="button button__main" @click.prevent="addItem">ADD</button>
 
         </form>
 
@@ -43,6 +43,7 @@
             addItem () {
                 let qs = require('qs');
                 axios.post('http://localhost/the-food-budget/src/api/', qs.stringify({
+                    additem: 'additem',
                     amount: this.amount,
                     place: this.place,
                     notes: this.notes,

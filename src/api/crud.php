@@ -86,4 +86,14 @@ function addItem($db, $postData)
 
     // $mysqli->query("INSERT INTO spending (amount, place, notes, category) VALUES ('$amount', '$place', '$notes', '$category')");
 }
+
+function deleteItem($db, $postData)
+{
+    $id = $postData['pk'];
+
+    $sql = "DELETE FROM spending WHERE pk = :id";
+    $query = $db->prepare($sql);
+    $parameters = array(':id' => $id);
+    $query->execute($parameters);
+}
 ?>

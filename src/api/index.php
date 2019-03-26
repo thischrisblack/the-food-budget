@@ -23,9 +23,12 @@ if ($_GET) {
     } else {
         echo "Invalid request.";
     }
-} else if (isset($_POST['amount'])) {
+} else if (isset($_POST['additem'])) {
     $db = openDatabaseConnection();
     addItem($db, $_POST);
+} else if (isset($_POST['delete'])) {
+    $db = openDatabaseConnection();
+    deleteItem($db, $_POST);
 } else {
     echo "NO REQUEST.";
 }

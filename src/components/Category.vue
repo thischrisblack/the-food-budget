@@ -23,7 +23,7 @@ export default {
     data() {
         return {
             queryResult: null,
-            showWeeks: 4
+            showWeeks: 5
         }
     },
     props: [
@@ -32,7 +32,7 @@ export default {
     computed: {
         weeklyData () {
             if (this.queryResult) {
-                return this.queryResult.slice(0, this.showWeeks);
+                return this.queryResult.slice(1, this.showWeeks);
             }
         },
         weeklyTotal () {

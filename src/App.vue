@@ -1,7 +1,7 @@
 <template>
     <div id="app" class="container">
         <EntryForm class="entry-form" :places="places" :trips="trips" :categories="categories" v-on:itemadded="getTrips"/>
-        <Current class="current" :trips="trips"/>
+        <Current class="current" :trips="trips" v-on:itemdeleted="getTrips"/>
         <div class="history">
             <h2>Previous Weeks</h2>
             <Category class="category" v-for="category in categories" :key="category" :category="category"/>
