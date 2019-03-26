@@ -34,9 +34,32 @@ body {
 .container {
   display: grid;
   grid-auto-rows: 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: repeat(4, 1fr);
   grid-template-areas: "left center right";
   grid-column-gap: 5rem;
+}
+
+input, textarea, select {
+  display: inline-block;
+  width: 100%;
+}
+
+.button {
+  display: inline-block;
+  padding: .8rem 1.5rem;
+  width: 100%;
+  cursor: pointer;
+
+  &__main {
+  }
+
+  &--increment {
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+    font-size: 150%;
+  }
+  
 }
 
 ul {
@@ -44,13 +67,28 @@ ul {
 }
 
 .item {  
+  display: flex;
+  justify-content: space-between;
 
   &:not(:last-child) {
-    border-bottom: 1px dotted silver;
+    border-bottom: 1px solid #eaeaea;
+  }
+
+  &__name {
+    margin-right: auto;
   }
 
   &__value {
-    float: right;
+    width: 20%;
+    text-align: right;
+
+    &--money::before {
+      content: '$';
+    }
+  }
+
+  &--strong {
+    font-weight: 600;
   }
   
 }

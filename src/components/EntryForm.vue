@@ -24,7 +24,7 @@
             <option>Restaurants</option>
         </select>
 
-        <input type="submit" name="submit" value="SAVE" id="submit">
+        <button class="button button__main">sdfsd</button>
 
         </form>
 

@@ -3,14 +3,16 @@
         <h3>{{ category }}</h3>
         <ul>
             <li class="item"  v-for="(week, index) in weeklyData" :key="index">
-                <span class="item__name">{{ week.yearweek }}</span> <span class="item__value">{{ week.total }}</span>
-            </li>
+                <span class="item__name">{{ week.yearweek }}</span> 
+                <span class="item__value item__value--money">{{ week.total }}</span>
+            </li>        
+            <li class="item item--strong">
+                <span class="item__name">Average</span>
+                <span class="item__value item__value--money">{{ weeklyAverage }}</span>
+            </li> 
         </ul>
-        <div class="category__footer">
-            <span>Average</span>
-            <span class="category__average">{{ weeklyAverage }}</span>
-            <button class="category__incrementer" @click="showWeeks *= 2">MORE</button>
-        </div>
+       
+        <button class="button button--increment" @click="showWeeks *= 2">+</button>
         
     </div>   
 </template>
