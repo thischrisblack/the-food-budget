@@ -12,7 +12,7 @@
 
 <script>
 
-import {_} from 'vue-underscore';
+import groupBy from 'lodash.groupby';
 
 export default {
     props: ['trips'],
@@ -28,9 +28,6 @@ export default {
             month = (month > 9 ? '' : '0') + month;
             date = (date > 9 ? '' : '0') + date;
             return year + '-' + month + '-' + date;
-        },
-        underCats () {
-            
         }
     },
     computed: {
@@ -42,9 +39,8 @@ export default {
         },
         categoryTotals () {
             let thisWeekTotals = {};
-            let categorized = _.groupBy(this.thisWeek, val => val.category);
+            let categorized = groupBy(this.thisWeek, val => val.category);
             for (let category in categorized) {
-                console.log(category);
                 let totalAmount = categorized[category].reduce(function (accumulator, currentValue) {
                     return accumulator + currentValue.amount * 1;
                 }, 0);

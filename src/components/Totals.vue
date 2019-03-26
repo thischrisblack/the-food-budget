@@ -7,7 +7,7 @@
                 <span class="item__value">Total</span>
                 <span class="item__value">Average</span>
             </li>
-            <li class="item" v-for="place in thesePlaces" :key="place">
+            <li class="item" v-for="place in thesePlaces" :key="place.place">
                 <span class="item__name">{{ place.place }} ({{ place.count }})</span>
                 <span class="item__value item__value--money">{{ place.total }}</span>
                 <span class="item__value item__value--money">{{ (place.total / place.count).toFixed(2) }}</span>
@@ -20,9 +20,9 @@
     <script>
     import axios from 'axios';
     export default {
+        props: ['places'],
         data () {
             return {
-                places: null,
                 showPlaces: 10
             }
         },
@@ -32,24 +32,6 @@
                     return this.places.slice(0, this.showPlaces);
                 }
             }
-        },
-        methods: {
-            getPlaces () {
-            // Make a request 
-                axios.get('http://localhost/the-food-budget/src/api/?query=totals', {crossdomain: true})
-                .then((response) => {
-                    // handle success
-                    console.log(response.data);
-                    this.places = response.data;
-                })
-                .catch(function (error) {
-                    // handle error
-                    console.log(error);
-                })
-            }
-        },
-        mounted: function () {
-            this.getPlaces();
         }
     }
 </script>
