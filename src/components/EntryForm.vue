@@ -16,7 +16,7 @@
 
         <input type="text" list="prevCats" placeholder="Category" name="place" class="dropdown">
         <datalist ID="prevCats">
-            <option v-for="(cat, key) in categories" :key="key" :value="key"></option>
+            <option v-for="(cat, key) in categories" :key="key" :value="cat"></option>
         </datalist>
 
         <button class="button button__main">sdfsd</button>
@@ -27,17 +27,9 @@
 
 </template>
 
-<script>    
-
-    import groupBy from 'lodash.groupby';
-
+<script>   
     export default {
-        props: ['places', 'trips'],
-        computed: {
-            categories () {
-                return groupBy(this.trips, val => val.category);
-            }
-        }
+        props: ['places', 'trips', 'categories']
     }
 </script>
 

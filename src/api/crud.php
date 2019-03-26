@@ -14,15 +14,12 @@ function openDatabaseConnection()
 /**
  * Get the full list of all trips.
  */
-function trips($db)
-{
-    
+function trips($db) {
     $sql = "SELECT * FROM spending ORDER BY date";
     $query = $db->prepare($sql);
     $query->execute();
 
     $trips = $query->fetchAll(PDO::FETCH_ASSOC);
-
     echo JSON_ENCODE($trips);
     
 }

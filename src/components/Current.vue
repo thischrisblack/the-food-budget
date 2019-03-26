@@ -38,6 +38,9 @@ export default {
             }
         },
         categoryTotals () {
+
+            // We're going to need to check for the existence of thisWeek data here!
+            
             let thisWeekTotals = {};
             let categorized = groupBy(this.thisWeek, val => val.category);
             for (let category in categorized) {
