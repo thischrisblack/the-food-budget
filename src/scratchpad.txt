@@ -40,3 +40,6 @@ current // the class of the <current> element.
     __item // the list item 
     __category
     __total
+
+
+ @click.prevent="addItem"

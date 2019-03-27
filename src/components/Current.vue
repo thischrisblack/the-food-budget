@@ -1,9 +1,8 @@
 <template>
     <div>
         <h2>This Week</h2>
-        <h3>Trips</h3>
         <ul>
-            <li class="item" v-for="(trip, key) in thisWeek" :key="key">
+            <li class="item animated" v-for="(trip, key) in thisWeek" :key="key">
                 <span class="item__name">{{ trip.place }}</span>
                 <span class="item__value item__value--money">{{ trip.amount }}
                     <span class="item__delete" @click="deleteItem(trip.pk)">&times;</span>

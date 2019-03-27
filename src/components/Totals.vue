@@ -7,7 +7,7 @@
                 <span class="item__value">Total</span>
                 <span class="item__value">Average</span>
             </li>
-            <li class="item" v-for="place in thesePlaces" :key="place.place">
+            <li class="item animated" v-for="place in thesePlaces" :key="place.place">
                 <span class="item__name">{{ place.place }} ({{ place.count }})</span>
                 <span class="item__value item__value--money">{{ place.total }}</span>
                 <span class="item__value item__value--money">{{ (place.total / place.count).toFixed(2) }}</span>

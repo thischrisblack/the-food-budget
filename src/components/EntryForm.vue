@@ -5,7 +5,7 @@
 
         <h1>WHAT DID WE SPEND?</h1>
 
-        <input type="number" step="0.01" placeholder="0.00" v-model="amount">
+        <input type="number" step="0.01" placeholder="$0.00" v-model="amount">
 
         <input type="text" list="prevPlaces" placeholder="At this place" class="dropdown" v-model="place" @click="place = ''" @change="onSelect">
         <datalist ID="prevPlaces">
@@ -19,7 +19,7 @@
             <option v-for="(cat, key) in categories" :key="key" :value="cat"></option>
         </datalist>
 
-        <button class="button button__main" @click.prevent="addItem">ADD</button>
+        <button class="button button__main" @click.prevent="addItem">SAVE</button>
 
         </form>
 

@@ -63,8 +63,8 @@ function weekly($db, $category)
 function addItem($db, $postData)
 {
     $amount = $postData["amount"];
-    $place = addslashes($postData["place"]);
-    $notes = addslashes($postData["notes"]);
+    $place = ($postData["place"]);
+    $notes = ($postData["notes"]);
     $category = $postData["category"];
 
     $sql = "INSERT INTO spending (amount, 
