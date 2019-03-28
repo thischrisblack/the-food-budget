@@ -42,4 +42,4 @@ current // the class of the <current> element.
     __total
 
 
- @click.prevent="addItem"
+---

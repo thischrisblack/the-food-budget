@@ -1,12 +1,13 @@
 <template>
     <div id="app" class="container">
         <EntryForm class="entry-form" :places="places" :trips="trips" :categories="categories" v-on:itemadded="getTrips"/>
-        <Current class="current" :trips="trips" v-on:itemdeleted="getTrips"/>
+        <Current class="current" :trips="trips" v-on:itemdeleted="getTrips" v-on:grocerytotal="groceryTotal"/>
         <div class="history">
             <h2>Previous Weeks</h2>
             <Category class="category" v-for="category in categories" :key="category" :category="category"/>
         </div>
-    <Totals class="totals" :places="places"/>
+        <Totals class="totals" :places="places"/>
+        <Picture class="picture" :image="getImage"/>
     </div>
 </template>
 
@@ -15,8 +16,12 @@ import EntryForm from "./components/EntryForm.vue";
 import Category from "./components/Category.vue";
 import Current from "./components/Current.vue";
 import Totals from "./components/Totals.vue";
+import Picture from "./components/Picture.vue";
 import axios from 'axios';
 import groupBy from 'lodash.groupby';
+
+import { budget } from './config';
+import { percentImages } from './config';
 
 
 export default {
@@ -24,20 +29,39 @@ export default {
     data () {
         return {
             trips: null,
-            places: null
+            places: null,
+            groceries: 0,
+            budget: budget
         }
     },
 	computed: {
 		categories () {
 			let cats = groupBy(this.trips, val => val.category);
 			return Object.keys(cats);
-		}
+        },
+        percentSpent () {
+
+                console.log(this.groceries, this.budget, 'balls');
+                return this.groceries / budget;
+          
+        },
+        getImage () {
+
+                let vm = this;
+                var images = require.context('./assets/', false, /\.gif$/);
+                function overSpent(index) {
+                    return vm.percentSpent < index.percent;
+                };
+                return images('./' + percentImages.find(overSpent).image);  
+     
+        }
 	},
     components: {
         EntryForm,
         Category,
         Current,
-        Totals
+        Totals,
+        Picture
     },
     methods: {
             getTrips (date) {
@@ -63,6 +87,9 @@ export default {
                             // handle error
                             console.log(error);
                     })
+            },
+            groceryTotal (value) {
+                this.groceries = value ? value : 0;
             }
     },
     mounted: function () {
