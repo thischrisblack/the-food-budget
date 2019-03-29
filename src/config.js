@@ -10,3 +10,8 @@ export const percentImages = [
 ];
 
 export const budget = 100;
+
+/**
+ * Base URL of your API endpoint.
+ */
+export const apiLink = 'http://localhost/the-food-budget/src/api/';

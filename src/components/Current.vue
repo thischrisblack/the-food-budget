@@ -1,22 +1,29 @@
 <template>
     <div>
         <h2>This Week</h2>
-        <ul>
-            <li class="item animated" v-for="(trip, key) in thisWeek" :key="key">
-                <span class="item__name">{{ trip.place }}</span>
-                <span class="item__value item__value--notes">{{ trip.notes }}</span>
-                <span class="item__value item__value--money">{{ trip.amount }}
-                    <span class="item__delete" @click="deleteItem(trip.pk)">&times;</span>
-                </span>
-            </li>
-        </ul>
-        <h3>Totals</h3>
-        <ul>
-            <li class="item" v-for="(total, category) in categoryTotals" :key="category">
-                <span class="item__name">{{ category }}</span> 
-                <span class="item__value item__value--money">{{ total }}</span> 
-            </li>
-        </ul>        
+        <div v-if="!(thisWeek.length === 0)">
+            <h3>Places</h3>
+            <ul>
+                <li class="item animated" v-for="(trip, key) in thisWeek" :key="key">
+                    <span class="item__name">{{ trip.place }}</span>
+                    <span class="item__value item__value--notes">{{ trip.notes }}</span>
+                    <span class="item__value item__value--money">{{ trip.amount }}
+                        <span class="item__delete" @click="deleteItem(trip.pk)">&times;</span>
+                    </span>
+                </li>
+            </ul>
+            <h3>Totals</h3>
+            <ul>
+                <li class="item" v-for="(total, category) in categoryTotals" :key="category">
+                    <span class="item__name">{{ category }}</span> 
+                    <span class="item__value item__value--money">{{ total }}</span> 
+                </li>
+            </ul>  
+        </div>
+        <div v-else class="notice">
+            Nothing so far!
+        </div>
+              
     </div>    
 </template>
 
@@ -24,6 +31,7 @@
 
 import groupBy from 'lodash.groupby';
 import axios from 'axios';
+import { apiLink } from '../config';
 
 export default {
     props: ['trips'],
@@ -47,7 +55,7 @@ export default {
         },
         deleteItem (id) {
             let qs = require('qs');
-            axios.post('http://localhost/the-food-budget/src/api/', qs.stringify({
+            axios.post(apiLink, qs.stringify({
                 delete: 'delete',
                 pk: id
             }))
@@ -70,10 +78,7 @@ export default {
                 return thisWeekTrips;
             }
         },
-        categoryTotals () {
-
-            // We're going to need to check for the existence of thisWeek data here!
-            
+        categoryTotals () {            
             let thisWeekTotals = {};
             let categorized = groupBy(this.thisWeek, val => val.category);
             for (let category in categorized) {

@@ -20,6 +20,7 @@
 
 <script>
 import axios from 'axios';
+import { apiLink } from '../config';
 export default {
     data() {
         return {
@@ -54,7 +55,7 @@ export default {
     methods: {
         getWeekList (category) {
         // Make a request 
-            axios.get('http://localhost/the-food-budget/src/api/?query=weekly&category=' + category, {crossdomain: true})
+            axios.get(apiLink + '?query=weekly&category=' + category, {crossdomain: true})
             .then((response) => {
                 // handle success
                 this.queryResult = response.data;

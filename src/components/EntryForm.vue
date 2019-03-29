@@ -1,5 +1,5 @@
 <template>
-    <div class="entry-form">
+    <div>
 
         <form>
 
@@ -29,6 +29,7 @@
 
 <script>   
     import axios from 'axios';
+    import { apiLink } from '../config';
     export default {
         props: ['places', 'trips', 'categories'],
         data () {
@@ -42,7 +43,7 @@
         methods: {
             addItem () {
                 let qs = require('qs');
-                axios.post('http://localhost/the-food-budget/src/api/', qs.stringify({
+                axios.post(apiLink, qs.stringify({
                     additem: 'additem',
                     amount: this.amount,
                     place: this.place,

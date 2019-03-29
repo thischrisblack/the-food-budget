@@ -32,10 +32,11 @@ body {
 
 .container {
 	display: grid;
-	grid-auto-rows: 1fr;
-	grid-template-columns: repeat(4, 1fr);
-	grid-template-areas: "left center right";
+	grid-auto-rows: min-content;
+	grid-template-columns: 1fr 3fr;
+	grid-template-areas: "main picture";
 	grid-column-gap: 5rem;
+	grid-row-gap: 2rem;
 }
 
 h1, h2 {
@@ -112,7 +113,7 @@ ul {
 
 
 	&:not(:last-child) {
-		border-bottom: 1px solid #fafafa;
+		border-bottom: 1px solid #eee;
 	}
 
 	&__name {
@@ -149,38 +150,86 @@ ul {
 
 }
 
-.current {
-	ul {
-		margin-bottom: 2rem;
-	}
-}
-
 .animated {
 	animation: grow .5s ease-out 0s;
 	animation-fill-mode: backwards;
 }
 
-.entry-form {
-	grid-area: left;
+.notice {
+	padding-bottom: 1rem;
+	text-align: center;
 }
 
-.week {
-	grid-area: center;
+
+/**
+Modules
+**/
+
+.section {
+	padding-top: 2rem;
+	border-top: 2px solid #0b6623;
+}
+
+.left {
+	grid-area: main;
+}
+
+
+.entry-form {
+	margin-bottom: 2rem;
+}
+
+.current {
 	display: grid;
+	ul {
+		margin-bottom: 2rem;
+	}
+}
+
+.picture {
+	grid-area: picture;
+	width: 100%;
+	height: 95vh;
+	background-size: cover;
+	background-position: center;
+}
+
+.history {
 }
 
 .totals {
 }
 
-.category {
+
+
+@media screen and (max-width: 85em) { 
+
+	html {
+		font-size: 62.5%;
+	}
+
+	.container {
+		grid-template-columns: 1fr;
+		grid-template-areas: "picture"
+							 "main";
+	}
+
+	input, textarea {
+		font-size: 120%;
+	}
+
+
+	.item__value {
+		width: 25%;
+	} 
+
+	.picture {
+		height: 70vw;
+	}
+
+  
 }
 
-.percent-image {
-	width: 100%;
-	height: 300px;
-	background-size: cover;
-	background-position: center;
-}
 
 .fade-enter-active, .fade-leave-active {
 transition: all 1s;
@@ -197,6 +246,6 @@ height: 0;
 
     100% {
         opacity: 1;
-        height: 2.6rem;
+        height: 2.8rem;
     }
 }
