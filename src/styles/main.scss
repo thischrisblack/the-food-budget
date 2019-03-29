@@ -200,9 +200,14 @@ Modules
 .totals {
 }
 
+@media screen and (max-width: 81em) { 
+	.container {
+		grid-template-columns: 1fr 2fr;
+		grid-template-areas: "main picture";
+	} 	
+}
 
-
-@media screen and (max-width: 85em) { 
+@media screen and (max-width: 48em) { 
 
 	html {
 		font-size: 62.5%;
