@@ -1,6 +1,6 @@
 <template>
     <div id="app" class="container">
-        <div class="entry-current">
+        <div class="main">
             <EntryForm class="entry-form section" :places="places" :trips="trips" :categories="categories" v-on:itemadded="getTrips"/>
             <Current class="current section" :trips="trips" v-on:itemdeleted="getTrips" v-on:grocerytotal="groceryTotal"/>
             <div class="history section">
@@ -38,6 +38,13 @@ export default {
             budget: budget
         }
     },
+    components: {
+        EntryForm,
+        Category,
+        Current,
+        Totals,
+        Picture
+    },
 	computed: {
 		categories () {
 			let cats = groupBy(this.trips, val => val.category);
@@ -55,13 +62,6 @@ export default {
             return images('./' + percentImages.find(overSpent).image);     
         }
 	},
-    components: {
-        EntryForm,
-        Category,
-        Current,
-        Totals,
-        Picture
-    },
     methods: {
             getTrips (date) {
             // Make a request 

@@ -2,7 +2,7 @@
     <div>
         <h3>{{ category }}</h3>
         <ul>
-            <li class="item animated"  v-for="(week, index) in weeklyData" :key="index">
+            <li class="item item--animated"  v-for="(week, index) in weeklyData" :key="index">
                 <span class="item__name">{{ dateFormat(week.yearweek) }}</span> 
                 <span class="item__value item__value--money">{{ week.total }}</span>
             </li> 

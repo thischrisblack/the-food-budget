@@ -6,6 +6,10 @@
 
 @import url('https://fonts.googleapis.com/css?family=Source+Code+Pro:400,700|Roboto:400,700|Oswald');
 
+/**************************************
+* General
+**************************************/
+
 $main-font-size: 1.6rem;
 
 *,
@@ -31,6 +35,7 @@ body {
 }
 
 .container {
+	position: relative;
 	display: grid;
 	grid-auto-rows: min-content;
 	grid-template-columns: 1fr 3fr;
@@ -38,6 +43,12 @@ body {
 	grid-column-gap: 5rem;
 	grid-row-gap: 2rem;
 }
+
+
+/**************************************
+HTML Elements
+**************************************/
+
 
 h1, h2 {
 	font-family: 'Oswald';
@@ -66,7 +77,8 @@ input, textarea, select {
 	transition: all .5s;
 
 	&:focus {
-		padding: 1.2rem 1.8rem;
+		padding: 1.4rem 1.8rem;
+		font-size: 100%;
 	}
 }
 
@@ -105,6 +117,22 @@ ul {
 	list-style-type: none;
 }
 
+
+/**************************************
+Classes
+**************************************/
+
+/* The left column */
+.main {
+	grid-area: main;
+}
+
+.section {
+	padding-top: 2rem;
+	border-top: 2px solid #0b6623;
+}
+
+/* List items */
 .item {	
 	display: flex;
 	justify-content: space-between;
@@ -148,32 +176,38 @@ ul {
 		font-weight: 600;
 	}
 
+	&--animated {
+		animation: grow .5s ease-out 0s;
+		animation-fill-mode: backwards;
+	}
+
 }
 
-.animated {
-	animation: grow .5s ease-out 0s;
-	animation-fill-mode: backwards;
-}
-
-.notice {
+.nothing-spent {
 	padding-bottom: 1rem;
 	text-align: center;
 }
 
+/************************************** 
+Animations
+**************************************/
 
-/**
+@keyframes grow {
+    0% {
+        opacity: 0;
+        height: 0;
+	}
+
+    100% {
+        opacity: 1;
+        height: 2.8rem;
+    }
+}
+
+
+/**************************************
 Modules
-**/
-
-.section {
-	padding-top: 2rem;
-	border-top: 2px solid #0b6623;
-}
-
-.left {
-	grid-area: main;
-}
-
+**************************************/
 
 .entry-form {
 	margin-bottom: 2rem;
@@ -187,26 +221,32 @@ Modules
 }
 
 .picture {
-	grid-area: picture;
-	width: 100%;
-	height: 95vh;
+	position: fixed;
+	top: 0rem;
+	right: 0rem;
+	width: 73vw;
+	height: 100vh;
 	background-size: cover;
 	background-position: center;
 }
 
-.history {
-}
+/**************************************
+Media Queries
+**************************************/
 
-.totals {
-}
-
+/** Laptop **/
 @media screen and (max-width: 81em) { 
 	.container {
 		grid-template-columns: 1fr 2fr;
 		grid-template-areas: "main picture";
-	} 	
+	} 
+	
+	.picture {		
+		width: 64vw;
+	}
 }
 
+/** Tablet and smaller **/
 @media screen and (max-width: 48em) { 
 
 	html {
@@ -221,36 +261,27 @@ Modules
 
 	input, textarea {
 		font-size: 120%;
+
+		&:focus {
+			font-size: 130%;
+		}
 	}
 
 
 	.item__value {
 		width: 25%;
-	} 
+	}
 
 	.picture {
-		height: 70vw;
+		position: relative;
+		top: 0;
+		right: 0;
+		grid-area: picture;
+		width: 100%;
+		height: 70vh;
+		background-size: cover;
+		background-position: center;
 	}
 
   
-}
-
-
-.fade-enter-active, .fade-leave-active {
-transition: all 1s;
-}
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-height: 0;
-}
-
-@keyframes grow {
-    0% {
-        opacity: 0;
-        height: 0;
-	}
-
-    100% {
-        opacity: 1;
-        height: 2.8rem;
-    }
 }

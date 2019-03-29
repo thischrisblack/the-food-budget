@@ -4,7 +4,7 @@
         <div v-if="!(thisWeek.length === 0)">
             <h3>Places</h3>
             <ul>
-                <li class="item animated" v-for="(trip, key) in thisWeek" :key="key">
+                <li class="item item--animated" v-for="(trip, key) in thisWeek" :key="key">
                     <span class="item__name">{{ trip.place }}</span>
                     <span class="item__value item__value--notes">{{ trip.notes }}</span>
                     <span class="item__value item__value--money">{{ trip.amount }}
@@ -14,13 +14,13 @@
             </ul>
             <h3>Totals</h3>
             <ul>
-                <li class="item" v-for="(total, category) in categoryTotals" :key="category">
+                <li class="item item--animated" v-for="(total, category) in categoryTotals" :key="category">
                     <span class="item__name">{{ category }}</span> 
                     <span class="item__value item__value--money">{{ total }}</span> 
                 </li>
             </ul>  
         </div>
-        <div v-else class="notice">
+        <div v-else class="nothing-spent">
             Nothing so far!
         </div>
               
@@ -34,12 +34,12 @@ import axios from 'axios';
 import { apiLink } from '../config';
 
 export default {
-    props: ['trips'],
     data () {
         return {
             deleteID: ''
         }
     },
+    props: ['trips'],
     methods: {
         getMonday () {
             let today = new Date();
