@@ -23,17 +23,17 @@ CREATE TABLE `spending` (
 
 
 --
--- Dumping data for table `spending`
+-- Some sample data for table `spending`
 --
 
 INSERT INTO `spending` (`pk`, `amount`, `place`, `notes`, `category`, `date`) VALUES
-(1, 15.00, 'Whole Foods', '', 'Groceries', '2015-08-30 16:16:10'),
-(2, 57.46, 'Trader Joes', '', 'Groceries', '2015-08-31 01:24:44'),
+(1, 15.00, 'Swole Foods', '', 'Groceries', '2015-08-30 16:16:10'),
+(2, 57.46, 'Trader Toes', '', 'Groceries', '2015-08-31 01:24:44'),
 (11, 4.39, 'COOP', '', 'Groceries', '2015-09-02 02:03:35'),
-(10, 3.99, 'Safeway', 'Goldfish', 'Snacks', '2015-09-01 22:37:25'),
+(10, 3.99, 'Smurfway', 'Goldfish', 'Snacks', '2015-09-01 22:37:25'),
 (12, 17.47, 'Skaggs', 'Shrimp!', 'Groceries', '2015-09-03 02:22:50'),
 (13, 3.99, 'Feed Depot', '', 'Groceries', '2015-09-05 03:03:38'),
-(14, 78.20, 'Sprouts', '', 'Groceries', '2015-09-17 21:43:59');
+(14, 78.20, 'Circle K', '', 'Groceries', '2015-09-17 21:43:59');
 
 
 --

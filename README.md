@@ -1,29 +1,7 @@
 # the-food-budget
 
-## Project setup
-```
-npm install
-```
+This is a simple spending-tracker app to help understand how much you're spending on various things per week. I initially wrote this when I first learned PHP. It was for my wife and I to track our food spending (groceries, snacks, restaurants) and it's pretty focused on groceries, but I'm sure you can make it work for anything you like.
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+I recently learned Vue.js and decided recoding this old app would be a good opportunity to take Vue for a test-drive.
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Run your tests
-```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+![screenshot](./assets/screenshot.JPG)

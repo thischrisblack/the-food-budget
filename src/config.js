@@ -1,11 +1,13 @@
 /**
  * Your weekly grocery budget.
  * This is for your "Groceries" category only, by default.
+ * You can modify some of the code in App.vue to retrieve another default category.
  */
 export const budget = 100;
 
 /**
  * Chooses an image to display according to what percentage of the budget has been spent this week.
+ * I loaded it up with cat GIFs for demo purposes, but you can use anything you like.
  */
 export const percentImages = [
     { percent: 0.3, image: 'cat-happy.gif'},    // Up to 30% shows this image
