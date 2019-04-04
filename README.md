@@ -4,4 +4,4 @@ This is a simple spending-tracker app to help understand how much you're spendin
 
 I recently learned Vue.js and decided recoding this old app would be a good opportunity to take Vue for a test-drive.
 
-![screenshot](./assets/screenshot.JPG)
+![screenshot](./src/assets/screenshot.JPG)
