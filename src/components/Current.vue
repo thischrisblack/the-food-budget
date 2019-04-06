@@ -2,6 +2,13 @@
     <div>
         <h2>This Week</h2>
         <div v-if="!(thisWeek.length === 0)">
+            <h3>Totals</h3>
+            <ul>
+                <li class="item item--animated" v-for="(total, category) in categoryTotals" :key="category">
+                    <span class="item__name">{{ category }}</span> 
+                    <span class="item__value item__value--money">{{ total }}</span> 
+                </li>
+            </ul>  
             <h3>Places</h3>
             <ul>
                 <li class="item item--animated" v-for="(trip, key) in thisWeek" :key="key">
@@ -12,13 +19,6 @@
                     </span>
                 </li>
             </ul>
-            <h3>Totals</h3>
-            <ul>
-                <li class="item item--animated" v-for="(total, category) in categoryTotals" :key="category">
-                    <span class="item__name">{{ category }}</span> 
-                    <span class="item__value item__value--money">{{ total }}</span> 
-                </li>
-            </ul>  
         </div>
         <div v-else class="nothing-spent">
             Nothing so far!
