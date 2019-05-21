@@ -66,26 +66,26 @@ export default {
             getTrips (date) {
             // Make a request 
                     axios.get(apiLink + '?query=trips', {crossdomain: true})
-                    .then((response) => {
-                            // handle success
-                            this.trips = response.data;
-                    })
-                    .catch(function (error) {
-                            // handle error
-                            console.log(error);
-                    })
+                        .then((response) => {
+                                // handle success
+                                this.trips = response.data;
+                        })
+                        .catch(function (error) {
+                                // handle error
+                                console.log(error);
+                        })
             },
             getPlaces () {
             // Make a request 
                     axios.get(apiLink + '?query=totals', {crossdomain: true})
-                    .then((response) => {
-                            // handle success
-                            this.places = response.data;
-                    })
-                    .catch(function (error) {
-                            // handle error
-                            console.log(error);
-                    })
+                        .then((response) => {
+                                // handle success
+                                this.places = response.data;
+                        })
+                        .catch(function (error) {
+                                // handle error
+                                console.log(error);
+                        })
             },
             groceryTotal (value) {
                 this.groceries = value ? value : 0;
