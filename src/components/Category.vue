@@ -47,8 +47,11 @@ export default {
             }
         },
         weeklyAverage () {
-            if (this.weeklyTotal) {
+            if (this.weeklyTotal > 0) {
+                console.log(this.weeklyTotal);
                 return (this.weeklyTotal / this.weeklyData.length).toFixed(2);
+            } else {
+                return 'N/A';
             }
         }
     },
