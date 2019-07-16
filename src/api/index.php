@@ -33,10 +33,4 @@ if ($_GET) {
     echo "NO REQUEST.";
 }
 
-
-
-//weekly($db);
-
-// Weekly
-
 ?>
