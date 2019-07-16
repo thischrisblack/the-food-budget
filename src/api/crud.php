@@ -28,7 +28,10 @@ function trips($db) {
  */
 function totals($db) 
 {
-  $sql = "SELECT COUNT(amount) as count, SUM(amount) as total, place FROM spending GROUP BY place ORDER BY total DESC";
+  $sql = "SELECT COUNT(amount) as count, SUM(amount) as total, place 
+          FROM spending 
+          GROUP BY place 
+          ORDER BY total DESC";
   $query = $db->prepare($sql);
   $query->execute();
 
@@ -42,7 +45,11 @@ function totals($db)
  */
 function weekly($db, $category) 
 {
-  $sql = "SELECT SUM(amount) as total, YEARWEEK(date, 1) as yearweek FROM spending WHERE category = '$category' GROUP BY yearweek ORDER BY yearweek DESC";
+  $sql = "SELECT SUM(amount) as total, YEARWEEK(date, 1) as yearweek 
+          FROM spending 
+          WHERE category = '$category' 
+          GROUP BY yearweek 
+          ORDER BY yearweek DESC";
   $query = $db->prepare($sql);
   $query->execute();
 
@@ -70,16 +77,16 @@ function addItem($db, $postData)
                                 place, 
                                 notes, 
                                 category)
-                                  VALUES 
+                              git add <div class=""></div>VALUES 
                                 (:amount, 
-                                  :place, 
-                                  :notes, 
-                                  :category)";
+                                 :place, 
+                                 :notes, 
+                                 :category)";
   $query = $db->prepare($sql);
   $parameters = array(':amount' => $amount,
-                        ':place' => $place,
-                        ':notes' => $notes,
-                        ':category' => $category,
+                      ':place' => $place,
+                      ':notes' => $notes,
+                      ':category' => $category,
                       );
   $query->execute($parameters);
 }
