@@ -13,7 +13,9 @@
             </li> 
         </ul>
        
-        <button class="button button--increment" @click="showWeeks *= 2">+</button>
+        <button v-if="(queryResult.length > showWeeks)" class="button button--increment" @click="showWeeks *= 2">+</button>
+
+        <div class="spacer" v-else></div>
         
     </div>   
 </template>
@@ -47,8 +49,11 @@ export default {
             }
         },
         weeklyAverage () {
-            if (this.weeklyTotal) {
+            if (this.weeklyTotal > 0) {
+                console.log(this.weeklyTotal);
                 return (this.weeklyTotal / this.weeklyData.length).toFixed(2);
+            } else {
+                return '0.00';
             }
         }
     },
