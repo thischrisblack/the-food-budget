@@ -77,7 +77,7 @@ function addItem($db, $postData)
                                 place, 
                                 notes, 
                                 category)
-                              git add <div class=""></div>VALUES 
+                              VALUES 
                                 (:amount, 
                                  :place, 
                                  :notes, 

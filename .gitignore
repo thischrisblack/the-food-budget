@@ -26,3 +26,4 @@ scratchpad.js
 vue.config.js
 scratchpad.txt
 package-lock.json
+/public/favicon.ico
